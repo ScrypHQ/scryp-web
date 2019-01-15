@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+body {
+  background: #122d49;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 11px !important;
+  color: #ddd;
+}
+
+.green-btn {
+  background: green;
+  color: white;
+}
+
+.red-btn {
+  background: red;
+  color: white;
+}
+
+.refresh {
+  background: #666;
+  color: white;
+}

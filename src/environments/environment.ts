@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  OAUTH_IDP_DOMAIN: 'scryp-web.auth.us-east-1.amazoncognito.com',
+  OAUTH_IDP_APP_CLIENT_ID: '17lq3g3ff2lqkd1fsfn9u062uu',
+  APP_LOGIN: 'http://localhost:4200',
+  APP_LOGOUT: 'http://localhost:4200/logout',
+  PARTNERS_URL: 'https://budb56gsbj.execute-api.us-east-1.amazonaws.com/Prod',
+  OFFERS_URL: 'https://yo8mpueb47.execute-api.us-east-1.amazonaws.com/Prod'
 };
 
 /*

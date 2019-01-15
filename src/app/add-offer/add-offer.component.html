@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>Offer</h2>
+<mat-dialog-content class="mat-typography">
+  <p class="error-msg">
+    {{errorMessage}}
+  </p>
+  <form class="example-form">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <span>QR Code:</span>
+      <div>
+        <qr-code #qrcode [value]="qrCode" [size]="100"></qr-code>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field fxFlex="100%">
+        <input matInput placeholder="Offer Name" [(ngModel)]="offerName" name="offerName">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field fxFlex="100%">
+        <input matInput placeholder="Item on offer" [(ngModel)]="itemName" name="itemName">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field fxFlex="100%">
+        <input matInput placeholder="Description" [(ngModel)]="description" name="description">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+      <mat-form-field fxFlex="50%">
+        <input type="number" matInput placeholder="Original Price USD" [(ngModel)]="itemPrice" name="itemPrice">
+      </mat-form-field>
+      <mat-form-field fxFlex="50%">
+        <input type="number" matInput placeholder="How Much Scryp can be availed" [(ngModel)]="scrypPrice" name="scrypPrice" (change)="createQRCode()">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <mat-checkbox [(ngModel)]="isConditional" name="isConditional">
+          Any Conditions?
+        </mat-checkbox>
+      </div>
+    </div>
+    <div fxLayout="row" *ngIf="isConditional">
+      <mat-form-field fxFlex="100%">
+        <input matInput placeholder="Condition" [(ngModel)]="condition" name="condition">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+      <mat-form-field fxFlex="50%">
+        <input matInput [matDatepicker]="startDate" placeholder="Choose start date" [(value)]="startOfferDate" name="startDate" (dateInput)="changeEvent('startDate', $event)">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex="50%">
+        <input matInput [matDatepicker]="endDate" placeholder="Choose end date" [(value)]="endOfferDate" name="endDate" (dateInput)="changeEvent('endDate', $event)">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="red-btn" mat-button mat-dialog-close>Cancel</button>
+  <button *ngIf="offerId" class="green-btn" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="createOffer()">Update</button>
+  <button *ngIf="!offerId" class="green-btn" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="createOffer()">Create</button>
+</mat-dialog-actions>

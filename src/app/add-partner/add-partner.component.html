@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Partner</h2>
+<mat-dialog-content class="mat-typography">
+  <p class="error-msg">
+    {{errorMessage}}
+  </p>
+  <form class="example-form">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <div class="partner-logo-container">
+        <img fxLayoutAlign="center center" [src]="url" class="partner-logo" alt="Display Picture">
+      </div>
+      <input fxLayoutAlign="center center" type='file' (change)="onSelectFile($event)">
+    </div>
+    <div fxLayout="row">
+      <mat-form-field fxFlex="100%">
+        <input matInput placeholder="Partner Name" [(ngModel)]="partnerName" name="partnerName">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+      <mat-form-field fxFlex="50%">
+        <input matInput placeholder="Partner Email" [(ngModel)]="partnerEmail" name="partnerEmail" [disabled]="partnerId">
+      </mat-form-field>
+      <mat-form-field fxFlex="50%">
+        <input matInput placeholder="Contact No." [(ngModel)]="partnerContact" name="partnerContact">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field fxFlex="100%">
+        <input matInput placeholder="Address" [(ngModel)]="address" name="address">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+      <mat-form-field fxFlex="50%">
+        <input matInput placeholder="City" [(ngModel)]="city" name="city">
+      </mat-form-field>
+      <mat-form-field fxFlex="50%">
+        <input matInput placeholder="Pincode" [(ngModel)]="pincode" name="pincode">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+      <mat-form-field fxFlex="50%">
+        <input matInput placeholder="Latitude" [(ngModel)]="latitude" name="latitude">
+      </mat-form-field>
+      <mat-form-field fxFlex="50%">
+        <input matInput placeholder="Longitude" [(ngModel)]="longitude" name="longitude">
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="red-btn" mat-button mat-dialog-close>Cancel</button>
+  <button *ngIf="partnerId" class="green-btn" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="addPartner()">Update</button>
+  <button *ngIf="!partnerId" class="green-btn" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="addPartner()">Create</button>
+</mat-dialog-actions>
